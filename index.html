@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <title>Exsarm NUI</title>
+    </head>
+
+    <style type="text/css">
+        :root{
+            --tilting:"TiltingGothic";
+            --ob:"obviouslybold";
+            --staticfont:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --circular:"Circular";
+            --frank:"FranklinGothic";
+            --tr:"Trebuchet MS";
+        }
+        body, html {
+            font-family:var(--frank),sans-serif;
+            padding:0;
+            margin:0;
+        }
+        .main-menu {
+            height:900px;
+         	background:#111827;
+         	color:white;
+         	width:1500px;
+         	position:absolute;
+         	top:50%;
+         	left:50%;
+            transform:translate(-50%, -50%);
+        }
+        #navigation {
+            height:100%;
+            width:240px;
+            position:fixed;
+            z-index:1;
+            top:0;
+            left:0;
+            background:#0b0f19;
+            overflow-x:hidden;
+        }
+        .b {
+            font-size:1.5vh;
+            margin-top:5vh;
+            color:#888f9b;
+            cursor:pointer;
+            display:inline-block;
+        }
+        .b a { color:#888f9b;text-decoration:none;-webkit-transition:0.2s all;transition:0.2s all; }
+        .b br::selection { background:transparent; } .b a::selection { background:transparent; } .b span::selection { background:transparent; }
+        .b a:hover {
+            color:white !important;
+        }
+        #navigation-icon {
+            position:absolute;
+            margin-left:25px;
+        }
+        .navigation-title {
+            position:absolute;
+            margin-left:75px;
+        }
+        .hsdX2 {
+            font-size:1.5vh;
+            margin-left:250px;
+            position:absolute;
+            left:0;
+        }
+        .identity {
+            margin-left:1.5vh;
+        }
+        .main-identity {
+            font-size:1.5vh;
+            margin-right:1.5vh;
+            position:absolute;
+            right:0;
+        }
+        .button {
+            background:#0b0f19;
+            font-size:2vh;
+            border:2px solid #0b0f19;
+            color:white;
+            padding:6px 18px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+            cursor:grab;
+            width:max-content;
+            border-radius:99px;
+        }
+        .button:hover {
+            background:white;
+            color:#0b0f19;
+        }
+        .button::selection {
+            background:transparent;
+        }
+        .home { display:none; }
+        .b2 {
+            margin-left:250px;
+            margin-top:7.5vh;
+            font-size:1.75vh;
+
+            background:#0b0f19;
+            border:2px solid #0b0f19;
+            width:650px;
+            padding:6px 18px;
+            border-radius:10px;
+
+            color:#c2c2c2;
+            cursor:pointer;
+        }
+        .b2 a {
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+        }
+        .b2 i {
+            float:right;
+        }
+        .b2 a:hover {
+            color:white !important;
+        }
+        .b2 span::selection { background:transparent; } .b2 br::selection { background:transparent; }
+        .rightAlign {
+            margin-left:650px;
+        }
+        .leftAlign {
+            margin-left:250px;
+        }
+        .leftAlign::selection{
+            background:transparent;
+        }
+        .socialnetwork::selection {
+            background:transparent;
+        }
+        .socialnetInputEmail {
+            font-size:1.5vh;
+            margin-top:2vh;
+        }
+        .socialnetInputEmail2 {
+            background:#0b0f19;
+            font-size:2vh;
+            border:none;
+            color:white;
+            padding:6px 18px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+            width:125px;
+        }
+        .socialnetInputEmail2:focus {
+            outline:none;
+        }
+        #domainDotSelect {
+            background:#0b0f19;
+            font-size:2vh;
+            border:none;
+            color:white;
+            padding:6px 18px;
+            -webkit-transition:0.2s all;
+            transition:0.2s all;
+            width:125px;
+        }
+        #domainDotSelect:focus {
+            outline:none
+        }
+        #domainDotSelect::selection {
+            background:transparent;
+        }
+        .mTitle {
+            margin-left:250px;
+            margin-top:2vh;
+        }
+
+        hr {
+            height:1px;
+   	        border:0;
+          	color:#343d4d;
+         	background-color:#343d4d;
+        }
+
+        @font-face{font-family:"FranklinGothic";src:url("src/fonts/FranklinGothic.woff2") format("woff2"),url("src/fonts/FranklinGothic.woff") format("woff");font-style:normal;font-display:swap;}
+        @font-face{font-family:"Circular";src:url("src/fonts/Circular.woff2") format("woff2"),url("src/fonts/Circular.woff") format("woff");font-style:normal;font-display:swap;}
+        @font-face{font-family:"TiltingGothic";src:url("src/fonts/TiltingGothic.woff") format("woff2"),url("src/fonts/TiltingGothic.woff") format("woff");font-style:normal;font-display:swap;}
+        @font-face{font-family:"obviouslysemi";src:url("src/fonts/ObviouslySemi.woff2") format("woff2"),url("src/fonts/ObviouslySemi.woff") format("woff");font-weight:900;font-style:normal;font-display:swap}@font-face{font-family:"obviouslybold";src:url("src/fonts/ObviouslyBold.woff2") format("woff2"),url("src/fonts/ObviouslyBold.woff") format("woff");font-weight:700;font-style:normal;font-display:swap}@font-face{font-family:"obviouslymedium";src:url("src/fonts/ObviouslyMedium.woff2") format("woff2"),url("src/fonts/ObviouslyMedium.woff") format("woff");font-weight:900;font-style:normal;font-display:swap}@font-face{font-family:"obviouslyblack";src:url("src/fonts/ObviouslyBlack.woff2") format("woff2"),url("src/fonts/ObviouslyBlack.woff") format("woff");font-weight:900;font-style:normal;font-display:swap}
+    </style>
+
+    <body>
+        <div id="root" class="root">
+            <div class="main-menu">
+                <nav id="navigation">
+                    <div class="b">
+                        <a onclick="openHome()" class="bHome"><i class="bi bi-house-door" id="navigation-icon"></i><span class="navigation-title bHomeTxt">Acceuil</span></a> <br><br>
+                        <a onclick="openManage()" class="bManage"><i class="bi bi-activity" id="navigation-icon"></i><span class="navigation-title bManageTxt">Gestion</span></a> <br><br>
+                        <a onclick="openSocialnetwork()" class="bSocialnetwork"><i class="bi bi-globe" id="navigation-icon"></i><span class="navigation-title bSocialnetworkTxt">Réseaux sociaux</span></a> <br><br>
+                        <a class="bSetting"><i class="bi bi-gear" id="navigation-icon"></i><span class="navigation-title bSettingTxt">Paramètres</span></a> <br><br>
+                        <a class="bAppro"><i class="bi bi-box-seam" id="navigation-icon"></i><span class="navigation-title bApproTxt">Ré-approvisioner</span></a> <br><br>
+                        <a class="bProperty"><i class="bi bi-building" id="navigation-icon"></i><span class="navigation-title bPropertyTxt">Propriétés</span></a> <br><br>
+                        <a class="bDocs"><i class="bi bi-book" id="navigation-icon"></i><span class="navigation-title bDocTxt">Documentation</span></a>
+                    </div>
+                </nav>
+
+                <div id="page-content">
+
+                    <div class="home">
+                        <h1 class="mTitle" style="font-family:var(--tr),sans-serif;">Acceuil</h1>
+                        <p class="mTitle" style="font-size:2vh;">Bienvenue Exsarm Dv, vous êtes le Patron de la société LTD.</p>
+                    </div>
+
+                    <div class="manage">
+                        <h1 class="mTitle" style="font-family:var(--tr),sans-serif;">Gestion</h1>
+                        <p class="mTitle" style="font-size:2.5vh;">Au total, vous avez récolté <a style="color:green;">$900999999900</a>.</p>
+
+                        <div class="b2">
+                            <a><span onclick="openManage_EmployeesList()" class="employees">Liste des employés <i class="bi bi-chevron-right"></i></span></a><br><br>
+                            <a><span class="salaryManage">Gestion des salaires <i class="bi bi-chevron-right"></i></span></a> <br><br>
+                            <a><span class="gradeManage">Gestion des grades <i class="bi bi-chevron-right"></i></span></a>
+                        </div>
+                    </div>
+
+                    <div class="manage_openEmployeeslist">
+                        <h1 class="mTitle" style="font-family:var(--tr),sans-serif;"><a onclick="openManage()" style="text-decoration:underline;cursor:pointer;">Gestion</a> > Liste des employés</h1>
+                    </div>
+
+                    <div class="socialnetwork">
+                        <h1 class="mTitle" style="font-family:var(--tr),sans-serif;">Réseaux sociaux</h1>
+
+                        <div class="socialnetInputEmail leftAlign"><i class="bi bi-envelope" style="color:#343d4d;"></i> E-mail</div><br><!--<input type="text" value="contact" class="socialnetInputEmail2 leftAlign" maxlength="8">--> <span class="leftAlign" style="font-size:2vh;">hello@ltd.&nbsp;</span> 
+                        <select name="domainDot" id="domainDotSelect">
+                            <option value="com">com</option>
+                            <option value="us">us</option>
+                            <option value="email">email</option>
+                            <option value="xyz">xyz</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="button">VALIDER</button>
+
+                        <hr>
+
+                        <div class="socialnetInputEmail leftAlign"><i class="bi bi-instagram" style="color:#343d4d;"></i> Instagram</div><br> <span class="leftAlign" style="font-size:2.5vh;"><a style="color:#343d4d;">@</a>ltd_lossantos</span>
+                        <br><br><button class="button leftAlign">PUBLIER</button>
+                        
+                        <hr>
+                    </div>
+
+                    <div class="settings">
+
+                    </div>
+
+                    <div class="appro">
+
+                    </div>
+
+                    <div class="property">
+
+                    </div>
+
+                    <div class="docs">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        openHome = function() {
+            $(function(){
+                $(".home").css("display","block");
+                $(".manage").css("display","none"); $(".manage_openEmployeeslist").css("display", "none");
+                $(".socialnetwork").css("display","none");
+                $(".settings").css("display","none");
+                $(".appro").css("display","none");
+                $(".property").css("display","none");
+                $(".docs").css("display","none");
+
+                $(".bHome").css("color","white");
+                $(".bManage").css("color","#888f9b");
+                $(".bSocialnetwork").css("color","#888f9b");
+                $(".bSetting").css("color","#888f9b");
+                $(".bAppro").css("color","#888f9b");
+                $(".bProperty").css("color","#888f9b");
+                $(".bDocs").css("color","#888f9b");
+            })
+        }
+        openManage = function() {
+            $(function(){
+                $(".home").css("display","none");
+                $(".manage").css("display","block"); $(".manage_openEmployeeslist").css("display", "none");
+                $(".socialnetwork").css("display","none");
+                $(".settings").css("display","none");
+                $(".appro").css("display","none");
+                $(".property").css("display","none");
+                $(".docs").css("display","none");
+
+                $(".bHome").css("color","#888f9b");
+                $(".bManage").css("color","white");
+                $(".bSocialnetwork").css("color","#888f9b");
+                $(".bSetting").css("color","#888f9b");
+                $(".bAppro").css("color","#888f9b");
+                $(".bProperty").css("color","#888f9b");
+                $(".bDocs").css("color","#888f9b");
+            })
+        }
+
+        openManage_EmployeesList = function() {
+            $(function(){
+                $(".home").css("display","none");
+                $(".manage").css("display","none"); $(".manage_openEmployeeslist").css("display", "block");
+                $(".socialnetwork").css("display","none");
+                $(".settings").css("display","none");
+                $(".appro").css("display","none");
+                $(".property").css("display","none");
+                $(".docs").css("display","none");
+
+                $(".bHome").css("color","#888f9b");
+                $(".bManage").css("color","white");
+                $(".bSocialnetwork").css("color","#888f9b");
+                $(".bSetting").css("color","#888f9b");
+                $(".bAppro").css("color","#888f9b");
+                $(".bProperty").css("color","#888f9b");
+                $(".bDocs").css("color","#888f9b");
+            })
+        }
+
+        openSocialnetwork = function() {
+            $(function(){
+                $(".home").css("display","none");
+                $(".manage").css("display","none"); $(".manage_openEmployeeslist").css("display", "none");
+                $(".socialnetwork").css("display","block");
+                $(".settings").css("display","none");
+                $(".appro").css("display","none");
+                $(".property").css("display","none");
+                $(".docs").css("display","none");
+    
+                $(".bHome").css("color","#888f9b");
+                $(".bManage").css("color","#888f9b");
+                $(".bSocialnetwork").css("color","white");
+                $(".bSetting").css("color","#888f9b");
+                $(".bAppro").css("color","#888f9b");
+                $(".bProperty").css("color","#888f9b");
+                $(".bDocs").css("color","#888f9b");
+            })
+        }
+        
+        openSocialnetwork()
+    </script>
+</html>
